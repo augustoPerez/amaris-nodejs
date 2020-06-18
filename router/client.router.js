@@ -1,6 +1,7 @@
 const { Router } = require('express');
 const { getClient, getClientByName, getClients, getClientByPolicy } = require('../controllers/client.controller')
 const { handleError } = require('../utils/error_handler');
+const { isClient, isAdmin } = require('../utils/auth.service');
 
 let router = Router();
 
@@ -8,7 +9,7 @@ router.get('/', async (req, res) => {
     res.send(await getClients());
 });
 
-router.get('/name/:name', async (req, res) => {
+router.get('/name/:name', isClient, async (req, res) => {
     try {
         const client = await getClientByName(req.params.name);
         res.send(client);
@@ -17,7 +18,7 @@ router.get('/name/:name', async (req, res) => {
     }
 });
 
-router.get('/policy/:idPolicy', async (req, res) => {
+router.get('/policy/:idPolicy', isAdmin, async (req, res) => {
     try {
         const client = await getClientByPolicy(req.params.idPolicy);
         res.send(client);
@@ -26,7 +27,7 @@ router.get('/policy/:idPolicy', async (req, res) => {
     }
 });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', isClient, async (req, res) => {
     try {
         const client = await getClient(req.params.id);
         res.send(client);
