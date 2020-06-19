@@ -18,7 +18,7 @@ describe('Get policies linked to a user name', () => {
             });
     });
 
-    it('Should return empty array for user withou policies accessing as admin', () => {
+    it('Should return empty array for user without policies accessing as admin', () => {
         requester
             .get(`/policy/client/${USER.name}`)
             .set('token', ADMIN.id)

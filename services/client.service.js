@@ -1,8 +1,15 @@
 const { get } = require('axios');
 
+let clients;
+
 async function getClients() {
-    const response = await get('http://www.mocky.io/v2/5808862710000087232b75ac');
-    return response.data.clients;
+    if (!clients) {
+        const response = await get('http://www.mocky.io/v2/5808862710000087232b75ac');
+        clients = response.data.clients;
+        return clients;
+    } else {
+        return clients;
+    }
 }
 
 async function getClient(id) {

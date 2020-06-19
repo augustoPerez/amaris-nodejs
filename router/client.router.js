@@ -1,13 +1,9 @@
 const { Router } = require('express');
-const { getClient, getClientByName, getClients, getClientByPolicy } = require('../controllers/client.controller')
+const { getClient, getClientByName, getClientByPolicy } = require('../controllers/client.controller')
 const { handleError } = require('../utils/error_handler');
 const { isClient, isAdmin } = require('../utils/auth.service');
 
 let router = Router();
-
-router.get('/', async (req, res) => {
-    res.send(await getClients());
-});
 
 router.get('/name/:name', isClient, async (req, res) => {
     try {

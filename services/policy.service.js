@@ -1,8 +1,15 @@
 const { get } = require('axios');
 
-async function getPolicies(url) {
-    const response = await get('http://www.mocky.io/v2/580891a4100000e8242b75c5');
-    return response.data.policies;
+let policies;
+
+async function getPolicies() {
+    if (!policies) {
+        const response = await get('http://www.mocky.io/v2/580891a4100000e8242b75c5');
+        policies = response.data.policies;
+        return policies;
+    } else {
+        return policies;
+    }
 }
 
 async function getPoliciesByClient(idClient) {

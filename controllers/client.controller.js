@@ -3,10 +3,6 @@ const { NOT_FOUND } = require('http-status-codes');
 const { ErrorHandler } = require('../utils/error_handler');
 const { getPolicy } = require('../services/policy.service');
 
-async function getClients() {
-    return await clientService.getClients();
-}
-
 async function getClient(id) {
     const client = await clientService.getClient(id);
     if (client) {
@@ -35,7 +31,6 @@ async function getClientByPolicy(idPolicy) {
 }
 
 module.exports = Object.freeze({
-    getClients,
     getClient,
     getClientByName,
     getClientByPolicy
