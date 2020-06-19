@@ -7,7 +7,7 @@ async function getPolicies(url) {
 
 async function getPoliciesByClient(idClient) {
     const policies = await getPolicies();
-    return policies.find(p => p.clientId === idClient);
+    return policies.filter(p => p.clientId === idClient);
 }
 
 async function getPolicy(id) {
