@@ -3,9 +3,10 @@
 const express = require('express');
 const { urlencoded, json } = require('body-parser');
 const { assignRoutes } = require('./router/router');
+const { port } = require('./config.json');
+
 
 let app = express();
-const port = 3000;
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
