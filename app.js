@@ -2,7 +2,7 @@
 
 const express = require('express');
 const { urlencoded, json } = require('body-parser');
-const { assignRoutes } = require('./router/router');
+const { assignRoutes } = require('./app/router/router');
 const { port } = require('./config.json');
 
 

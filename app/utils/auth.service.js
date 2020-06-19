@@ -1,6 +1,6 @@
 const { UNAUTHORIZED, FORBIDDEN } = require('http-status-codes');
 const { getClient } = require('../services/client.service');
-const { ErrorHandler, handleError } = require('../utils/error_handler');
+const { ErrorHandler, handleError } = require('./error_handler');
 
 const ADMIN = "admin";
 
