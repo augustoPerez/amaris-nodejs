@@ -27,7 +27,7 @@ async function isAdmin(req, res, next) {
 }
 
 async function validUser(req) {
-    const client = await getClient(req.params.id);
+    const client = await getClient(req.headers.token);
     if (!client) {
         throw new ErrorHandler(UNAUTHORIZED, 'You need to authenticate');
     }
